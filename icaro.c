@@ -33,7 +33,7 @@ void encontrar(struct Carta c[],char sorteado[], int i, int x, int j,int h){
 	}else{
 		if(strcmp(c[i].nome,sorteado)==0){
 			printf("Indice %d", i);
-			printf("Habilidade %d\n", c[i].habilidade[h]);
+			printf("Habilidade %d\n", c[i].habilidade[h%x]);
 			strcpy(sorteado,c[i].prox);
 			encontrar(c,sorteado,0,x,j+1,h+1);
 		}else{
@@ -41,22 +41,6 @@ void encontrar(struct Carta c[],char sorteado[], int i, int x, int j,int h){
 		}
 	}
 }
-void habili(struct Carta c,int i, int j, int x){
-	if(i == x){
-		return;
-	}else{
-		if(c.habilidade[i]==0){
-			c.habilidade[i] == c.habilidade[j];
-			habili(c,i,j+1,x);
-		}else{
-			habili(c,i+1,j,x);
-		}
-	}
-
-}
-
-
-
 int main(){
 	int a, i, j;
 
@@ -71,10 +55,6 @@ int main(){
 		}
 		scanf("%s", c[i].prox);
 	}
-	for(i = 0; i < a; i++){
-		habili(c[i],0,0,a);
-	}
-
 	alfa(c,0,a);
 	char sorteado[40];
 	scanf("%s", sorteado);
