@@ -12,20 +12,19 @@ struct Carta{
 };
 
 
-void alfa(struct Carta c[], int i, int x){
-	if(i==x){
+void alfabetica(struct Carta c[], int i, int x){
+	if(i == x){
 		return;
 	}else{
-		if(strcmp(c[i].nome, c[i+1].nome)>0){
+		if(strcmp(c[i].nome, c[i+1].nome)<0){
+			alfabetica(c,i+1,x);
+		}else{
 			struct Carta nova = c[i];
 			c[i] = c[i+1];
-			c[i+1]=nova;
-			alfa(c, 0,x);
-		}else{
-			alfa(c,i+1, x);
+			c[i+1] = nova;
+			alfabetica(c,0, x);
 		}
 	}
-
 }
 void encontrar(struct Carta c[],char sorteado[], int i, int x, int j,int h){
 	if(j == x){
@@ -55,7 +54,7 @@ int main(){
 		}
 		scanf("%s", c[i].prox);
 	}
-	alfa(c,0,a);
+	alfabetica(c,0,a);
 	char sorteado[40];
 	scanf("%s", sorteado);
 	encontrar(c,sorteado,0,a,0,0);
