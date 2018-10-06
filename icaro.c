@@ -18,6 +18,8 @@ void alfabetica(struct Carta c[], int i, int x){
 	}else{
 		if(strcmp(c[i].nome, c[i+1].nome)<0){
 			alfabetica(c,i+1,x);
+		}else if(strcmp(c[i].nome, c[i+1].nome)==0){
+			alfabetica(c,i+1,x);
 		}else{
 			struct Carta nova = c[i];
 			c[i] = c[i+1];
@@ -31,8 +33,8 @@ void encontrar(struct Carta c[],char sorteado[], int i, int x, int j,int h){
 		return;
 	}else{
 		if(strcmp(c[i].nome,sorteado)==0){
-			printf("Indice %d", i);
-			printf("Habilidade %d\n", c[i].habilidade[h%x]);
+			printf("%d\n", i);
+			printf("%d\n", c[i].habilidade[h%c[i].k]);
 			strcpy(sorteado,c[i].prox);
 			encontrar(c,sorteado,0,x,j+1,h+1);
 		}else{
