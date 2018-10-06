@@ -49,12 +49,12 @@ int main(){
 
 	struct Carta c[a];
 	for(i = 0; i < a; i++){
-		scanf("%s", c[i].nome);
+		fgets(c[i].nome,50,stdin);
 		scanf("%d", &c[i].k);
 		for(j = 0;j<c[i].k;j++){
 			scanf("%d", &c[i].habilidade[j]);
 		}
-		scanf("%s", c[i].prox);
+		fgets(c[i].nome,50,stdin);
 	}
 	alfabetica(c,0,a);
 	char sorteado[40];
